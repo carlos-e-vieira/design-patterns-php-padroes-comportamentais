@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\AcoesAoGerarPedido\CriarPedidoNoBanco;
+use App\AcoesAoGerarPedido\EnviarPedidoPorEmail;
+use App\AcoesAoGerarPedido\LogGerarPedido;
 use DateTimeImmutable;
 
 class GerarPedidoHandler
@@ -23,13 +26,12 @@ class GerarPedidoHandler
         $pedido->nomeCliente = $gerarPedido->getNomeCliente();
         $pedido->orcamento = $orcamento;
 
-        // PedidosRepository
-        echo '***** Cria pedido no banco de dados *****' . PHP_EOL;
+        $pedidosRepository = new CriarPedidoNoBanco();
+        $logGerarPedido = new LogGerarPedido();
+        $enviarPedidoPorEmail = new EnviarPedidoPorEmail();
 
-        // MailService
-        echo '***** Envia email para cliente *****' . PHP_EOL;
-
-        // Log
-        echo '***** Gerar log de criação de pedido *****' . PHP_EOL;
+        $pedidosRepository->executaAcao($pedido);
+        $logGerarPedido->executaAcao($pedido);
+        $enviarPedidoPorEmail->executaAcao($pedido);
     }
 }
