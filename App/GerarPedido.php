@@ -6,7 +6,7 @@ namespace App;
 
 use DateTimeImmutable;
 
-class GerarPedido
+class GerarPedido implements Command
 {
     private $valorOrcamento;
     private $numeroItens;
@@ -22,7 +22,7 @@ class GerarPedido
         $this->nomeCliente = $nomeCliente;
     }
 
-    public function execute()
+    public function execute(): void
     {
         $orcamento = new Orcamento();
         $orcamento->quantidadeItens = $this->numeroItens;
