@@ -1,6 +1,7 @@
 <?php
 
 use App\GerarPedido;
+use App\GerarPedidoHandler;
 
 require 'vendor/autoload.php';
 
@@ -9,4 +10,5 @@ $numeroDeItens = $argv[2];
 $nomeCliente = $argv[3];
 
 $gerarPedido = new GerarPedido($valorOrcamento, $numeroDeItens, $nomeCliente);
-$gerarPedido->execute();
+$gerarPedidoHandler = new GerarPedidoHandler();
+$gerarPedidoHandler->execute($gerarPedido);

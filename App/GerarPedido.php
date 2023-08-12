@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use DateTimeImmutable;
-
-class GerarPedido implements Command
+class GerarPedido
 {
     private $valorOrcamento;
     private $numeroItens;
@@ -22,18 +20,15 @@ class GerarPedido implements Command
         $this->nomeCliente = $nomeCliente;
     }
 
-    public function execute(): void
-    {
-        $orcamento = new Orcamento();
-        $orcamento->quantidadeItens = $this->numeroItens;
-        $orcamento->valor = $this->valorOrcamento;
+    public function getValorOrcamento() {
+        return $this->valorOrcamento;
+    }
 
-        $pedido = new Pedido();
-        $pedido->dataFinalizacao = new DateTimeImmutable();
-        $pedido->nomeCliente = $this->nomeCliente;
-        $pedido->orcamento = $orcamento;
+    public function getNumeroItens() {
+        return $this->numeroItens;
+    }
 
-        echo 'Cria pedido no banco de dados' . PHP_EOL;
-        echo 'Envia email para cliente' . PHP_EOL;
+    public function getNomeCliente() {
+        return $this->nomeCliente;
     }
 }
