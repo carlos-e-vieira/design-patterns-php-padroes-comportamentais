@@ -1,9 +1,6 @@
 <?php
 
 use App\CalculadoraDeDescontos;
-use App\CalculadoraDeImpostos;
-use App\Impostos\Icms;
-use App\Impostos\Iss;
 use App\Orcamento;
 
 require_once 'vendor/autoload.php';
