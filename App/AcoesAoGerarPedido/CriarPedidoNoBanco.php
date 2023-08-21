@@ -6,7 +6,7 @@ namespace App\AcoesAoGerarPedido;
 
 use App\Pedido;
 
-class CriarPedidoNoBanco
+class CriarPedidoNoBanco implements AcaoAposGerarPedido
 {
     public function executaAcao(Pedido $pedido): void
     {

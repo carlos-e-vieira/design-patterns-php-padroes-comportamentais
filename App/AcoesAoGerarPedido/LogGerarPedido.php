@@ -6,7 +6,7 @@ namespace App\AcoesAoGerarPedido;
 
 use App\Pedido;
 
-class LogGerarPedido
+class LogGerarPedido implements AcaoAposGerarPedido
 {
     public function executaAcao(Pedido $pedido): void
     {
